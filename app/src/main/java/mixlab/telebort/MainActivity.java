@@ -1,24 +1,25 @@
-package politrussia.touchclient;
+package mixlab.telebort;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import mixlab.telebort.R;
+
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "PolitRussia";
+    private static final String TAG = "TeleBort";
     private WebView webView;
+    private static final String URL = "https://telebort.ru"; //"http://m.mixlabel.ru"
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             webView.setWebChromeClient(new WebChromeClient() {
             });
         }
-        if(res)webView.loadUrl("http://m.mixlabel.ru");
+        if(res)webView.loadUrl(URL);
 
     }
     @Override
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == PERMISSION_REQUEST_CODE && grantResults.length == reqPermissions.length) {
             Log.d(TAG, "permission code is: " + grantResults[0]+ " waited: " + PackageManager.PERMISSION_GRANTED);
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                webView.loadUrl("http://m.mixlabel.ru");
+                webView.loadUrl(URL);
             }
 
         }
